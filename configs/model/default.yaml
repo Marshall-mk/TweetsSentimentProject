@@ -1,0 +1,11 @@
+name: TweetsSentimentAnalysis
+save_path: C:/Users/HI/Desktop/.dev/python/Deep learning/Projects/TweetsSentimentAnalysismodels/1/emotionModel.hdf5
+ckpt_path: C:/Users/HI/Desktop/.dev/python/Deep learning/Projects/TweetsSentimentAnalysis/models/ckpt/emotionModel.hdf5
+onnx_path: C:/Users/HI/Desktop/.dev/python/Deep learning/Projects/TweetsSentimentAnalysis/models/1/emotionModel.onnx
+history_path: C:/Users/HI/Desktop/.dev/python/Deep learning/Projects/TweetsSentimentAnalysis/evaluation/
+
+Train_path: C:/Users/HI/Desktop/.dev/python/Deep learning/Projects/TweetsSentimentAnalysis/Data/Train data.csv
+Test_path: C:/Users/HI/Desktop/.dev/python/Deep learning/Projects/TweetsSentimentAnalysis/Data/Test data.csv
+Val_path: C:/Users/HI/Desktop/.dev/python/Deep learning/Projects/TweetsSentimentAnalysis/Data/Validation data.csv
+load_with_info: False
+
