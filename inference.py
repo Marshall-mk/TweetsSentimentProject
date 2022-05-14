@@ -3,14 +3,16 @@ import numpy as np
 
 
 class TSPredictor:
-    def __init__(self, model_path):
+    def __init__(self, model_path,vectorize_layer_path):
         self.model_path = model_path
-        self.model = tf.keras.models.load_model(self.saved_path)
-
-    def preprocess(self, raw_text):
-        text_vectorization = tf.keras.layers.TextVectorization(max_tokens=2000, output_mode="int", output_sequence_length=100,)
+        self.model = tf.keras.models.load_model(self.model_path)
+        self.vectorize_layer_path = vectorize_layer_path
+        self.loaded_vectorize_layer_model = tf.keras.models.load_model(self.vectorize_layer_path)
         
-        return text_vectorization(raw_text)[np.newaxis, :]
+    def preprocess(self, raw_text):
+        # Uses the trained vectorization layer to preprocess the text
+        loaded_vectorize_layer = self.loaded_vectorize_layer_model.layers[-1]
+        return loaded_vectorize_layer(raw_text)[np.newaxis, :] # Creates a new axis for batch size
 
     def infer(self, text=None):
         pred = self.model.predict(text)
@@ -18,7 +20,9 @@ class TSPredictor:
 
 
 if __name__ == "__main__":
-    text = "image path"
-    predictor = TSPredictor("models/1/emotionModel.hdf5")
+    text = "text"
+    file_path = "C:/Users/HI/Desktop/.dev/python/Deep learning/Projects/TweetsSentimentAnalysis/models/1/vectorize_layer"
+    model_path = "C:/Users/HI/Desktop/.dev/python/Deep learning/Projects/TweetsSentimentAnalysis/models/1/TSModel.hdf5"
+    predictor = TSPredictor(model_path,file_path)
     predictor.preprocess(text)
     print(predictor.infer(text))

@@ -10,7 +10,7 @@ import mlflow # for tracking
 
 EXPERIMENT_NAME = "TweetsSentiment"
 EXPERIMENT_ID = mlflow.create_experiment(EXPERIMENT_NAME)
-MLFLOW_TRACKING_URI="https://dagshub.com/Marshall-mk/TweetsSentiment.mlflow"
+MLFLOW_TRACKING_URI="https://dagshub.com/Marshall-mk/TweetsSentimentProject.mlflow"
 mlflow.set_tracking_uri(MLFLOW_TRACKING_URI)
 mlflow.tensorflow.autolog()
 
