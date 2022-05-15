@@ -14,15 +14,14 @@ class TSPredictor:
         loaded_vectorize_layer = self.loaded_vectorize_layer_model.layers[-1]
         return loaded_vectorize_layer(raw_text)[np.newaxis, :] # Creates a new axis for batch size
 
-    def infer(self, text=None):
+    def infer(self, text):
         pred = self.model.predict(text)
-        return {'output':pred}
+        return {'output':pred.tolist()}
 
 
 if __name__ == "__main__":
     text = "text"
-    file_path = "C:/Users/HI/Desktop/.dev/python/Deep learning/Projects/TweetsSentimentAnalysis/models/1/vectorize_layer"
-    model_path = "C:/Users/HI/Desktop/.dev/python/Deep learning/Projects/TweetsSentimentAnalysis/models/1/TSModel.hdf5"
+    file_path = "./models/1/vectorize_layer"
+    model_path = "./models/1/TSModel.hdf5"
     predictor = TSPredictor(model_path,file_path)
-    predictor.preprocess(text)
-    print(predictor.infer(text))
+    print(predictor.infer(predictor.preprocess(text)))

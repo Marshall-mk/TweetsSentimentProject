@@ -33,7 +33,13 @@ def main(cfg):
 
     test_ds = ts_data.load_test_data(cfg.model.Test_path).map(lambda x, y: (text_vectorization(x), y),num_parallel_calls=4)
     
-    
+    # we need to save the text vectorization layer in order to use it in the inference
+    vectorize_layer_model = tf.keras.models.Sequential()
+    vectorize_layer_model.add(tf.keras.Input(shape=(1,), dtype=tf.string))
+    vectorize_layer_model.add(text_vectorization)
+    filepath = cfg.model.vectorize_layer_path
+    vectorize_layer_model.save(filepath, save_format="tf")
+
     """Compiles and trains the model"""
     ts_model.compile(optimizer= cfg.train.optimizer, loss = cfg.train.loss,  metrics= cfg.train.metrics)
 
@@ -60,9 +66,9 @@ def main(cfg):
     ts_model.save(cfg.model.save_path)
 
     # """converting the model to onnx"""
-    # spec = (tf.TensorSpec((None, 224, 224, 3), tf.float32, name="input"),)
-    # output_path = cfg.model.onnx_path
-    # model_proto, _ = tf2onnx.convert.from_keras(ts_model, input_signature=spec, opset=13, output_path=output_path)
+    spec = (tf.TensorSpec((None,None,), tf.float32, name="input"),)
+    output_path = cfg.model.onnx_path
+    model_proto, _ = tf2onnx.convert.from_keras(ts_model, input_signature=spec, opset=13, output_path=output_path)
     
     """Model training history """
     _model_history(model_info=model_info, cfg=cfg)
