@@ -1,1 +1,1 @@
-# TweetsSentimentProject
+This repo illustrates the basics of MLOps for NLP (sentiment analysis). It is my attempt to show case the progress I have made so for as an MLOPs learner and practitioner. It is the second in the series and I look forward to building more. I used keras to build the model, hydra for configuration management, mlflow for model tracking, dagshub for model and data versioning, docker for model packaging etc. The model returns the sentiment score of a given tweet.
