@@ -13,7 +13,7 @@ class TSModel(Model):
         
         self.dense = tf.keras.layers.Dense(128, activation="relu")
         self.out  = tf.keras.layers.Dense(1, activation="sigmoid")
-        #self.build()
+
 
     def call(self, input):
         """ Builds the Keras model based """
