@@ -8,8 +8,8 @@ import matplotlib.pyplot as plt # plots
 import mlflow # for tracking
 
 
-EXPERIMENT_NAME = "TweetsSentiment"
-EXPERIMENT_ID = mlflow.create_experiment(EXPERIMENT_NAME)
+#EXPERIMENT_NAME = "TweetsSentiment"
+#EXPERIMENT_ID = mlflow.create_experiment(EXPERIMENT_NAME)
 MLFLOW_TRACKING_URI="https://dagshub.com/Marshall-mk/TweetsSentimentProject.mlflow"
 mlflow.set_tracking_uri(MLFLOW_TRACKING_URI)
 mlflow.tensorflow.autolog()
@@ -50,7 +50,7 @@ def main(cfg):
     """Trains the model"""
     with mlflow.start_run():
     # ... Define a model
-        model_info = ts_model.train(
+        model_info = ts_model.fit(
             train_ds,
             batch_size=cfg.train.batch_size,
             epochs=cfg.train.epochs,

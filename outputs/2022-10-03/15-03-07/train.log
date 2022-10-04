@@ -1,0 +1,2 @@
+[2022-10-03 15:03:33,326][tensorflow][WARNING] - Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+[2022-10-03 15:03:34,532][tensorflow][INFO] - Assets written to: C:/Users/HI/Desktop/.dev/python/Deep learning/Projects/TweetsSentimentAnalysis/models/1/vectorize_layer\assets

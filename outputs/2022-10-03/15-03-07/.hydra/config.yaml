@@ -1,0 +1,25 @@
+model:
+  name: TweetsSentimentAnalysis
+  save_path: C:/Users/HI/Desktop/.dev/python/Deep learning/Projects/TweetsSentimentAnalysis/models/1/TSModel.hdf5
+  ckpt_path: C:/Users/HI/Desktop/.dev/python/Deep learning/Projects/TweetsSentimentAnalysis/models/ckpt/TSModel.hdf5
+  onnx_path: C:/Users/HI/Desktop/.dev/python/Deep learning/Projects/TweetsSentimentAnalysis/models/1/TSModel.onnx
+  history_path: C:/Users/HI/Desktop/.dev/python/Deep learning/Projects/TweetsSentimentAnalysis/evaluation/
+  vectorize_layer_path: C:/Users/HI/Desktop/.dev/python/Deep learning/Projects/TweetsSentimentAnalysis/models/1/vectorize_layer
+  Train_path: C:/Users/HI/Desktop/.dev/python/Deep learning/Projects/TweetsSentimentAnalysis/Data/Train
+    data.csv
+  Test_path: C:/Users/HI/Desktop/.dev/python/Deep learning/Projects/TweetsSentimentAnalysis/Data/Test
+    data.csv
+  Val_path: C:/Users/HI/Desktop/.dev/python/Deep learning/Projects/TweetsSentimentAnalysis/Data/Validation
+    data.csv
+  load_with_info: false
+train:
+  batch_size: 256
+  buffer_size: 1000
+  epochs: 10
+  val_subsplits: 5
+  steps_per_epoch: 0
+  validation_steps: 0
+  loss: binary_crossentropy
+  optimizer: rmsprop
+  metrics:
+  - accuracy
